@@ -28,16 +28,16 @@ const options = {
 //     console.log(`Server listening on port ${server.address().port}`);
 // });
 
-https.createServer(options, function (req, res) {
-    res.writeHead(200);
-    res.end("hello world\n");
-}).listen(443);
+// https.createServer(options, function (req, res) {
+//     res.writeHead(200);
+//     res.end("hello world\n");
+// }).listen(port);
 
 
-// const server = app.listen(port, (error) => {
-//     if (error) return console.log(`Error: ${error}`);
-//     console.log(`Server listening on port ${server.address().port}`);
-// });
+const server = app.listen(port, (error) => {
+    if (error) return console.log(`Error: ${error}`);
+    console.log(`Server listening on port ${server.address().port}`);
+});
 
 // https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTPS-server/
 // openssl genrsa -out key.pem
