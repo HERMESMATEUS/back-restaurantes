@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const port = 3002;
 const app = express();
 const routes = require('./routes/routes');
+const Generals = require('./routes/Generals');
 const Authentication = require('./routes/Authentication');
 var cors = require('cors');
 const https = require('https')
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 // routes(app);
 Authentication(app);
+Generals(app);
 
 // Start the server
 

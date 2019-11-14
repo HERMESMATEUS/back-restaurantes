@@ -16,6 +16,44 @@ const Authentication = app => {
         response.send({ "textEcrypt": sha1(text), "text": text });
     });
 
+    // INSERT INTO cliente ( Id_Cliente, Nombre, Id_Rol) VALUES (1014290650, 'Hermes Mateus', 3);
+
+    app.post('/Authentication/CreateOrSelectCliente', (request, response) => {
+        let Id_Cliente = request.body.Id_Cliente;
+        let Nombre = request.body.Nombre;
+        let Id_Rol = request.body.Id_Rol;
+        let ErrorCliente = { "success": false, "body": "Error en el Usuario Cliente" }
+        try {
+            if (Id_Cliente && Nombre && Id_Rol) {
+                pool.query('SELECT * FROM cliente WHERE Id_Cliente = ? ', Id_Cliente, (error, result) => {
+                    if (error) response.send(ErrorCliente);
+                    if (result.length != 0) {
+                        response.send({
+                            "success": true,
+                            "body": { ...result[0] }
+                        });
+                    } else {
+                        pool.query('INSERT INTO cliente SET ? ', request.body, (error, result, fields) => {
+                            if (error) {
+                                console.log('error: ', error);
+                                ErrorCliente.body = error.code;
+                                response.send(ErrorCliente);
+                            }
+                            else if (result.length != 0) {
+                                response.send({
+                                    "success": true,
+                                    "body": request.body
+                                });
+                            } else response.send(ErrorCliente);
+                        });
+                    };
+                });
+            } else response.send(ErrorCliente);
+        } catch (error) {
+            response.send(ErrorCliente);
+        }
+    });
+
     app.post('/Authentication/SignIn', (request, response) => {
         let Id_Usuario = request.body.Id_Usuario;
         let Contraseña = sha1(request.body.Contraseña);
