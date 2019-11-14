@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const port = 3002;
 const app = express();
 const routes = require('./routes/routes');
+const Authentication = require('./routes/Authentication');
 var cors = require('cors');
 const https = require('https')
 const fs = require('fs');
@@ -13,7 +14,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true,
 }));
-routes(app);
+// routes(app);
+Authentication(app);
 
 // Start the server
 

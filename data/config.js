@@ -5,7 +5,7 @@ const config = {
     host: '127.0.0.1',
     user: 'restaurantes',
     password: '123456',
-    database: 'test_api',
+    database: 'restaurantes',
     port: 3306,
 };
 
