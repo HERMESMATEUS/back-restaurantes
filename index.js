@@ -8,7 +8,6 @@ var cors = require('cors');
 const https = require('https')
 const fs = require('fs');
 
-// app.use(express.static(__dirname + '/foldername'));
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
