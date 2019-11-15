@@ -207,3 +207,9 @@ INSERT INTO cliente ( Id_Cliente, Nombre, Id_Rol) VALUES (1014290650, 'Hermes Ma
 
 INSERT INTO usuarios ( Id_Usuario, Nombre, Id_Rol, Contraseña, Id_Punto_venta, Cargo_Descripcion, Genero, Edad, Fecha_Ingreso)  
 VALUES (1014290650, 'Hermes Mateus', 1,'f865b53623b121fd34ee5426c792e5c33af8c227', 1,'Soy el dueño del chuzo perro','Masculino',22, curdate());
+
+
+SELECT pla_inter_ingre.Id_Pla, pla_inter_ingre.Id_Plato, pla_inter_ingre.Id_Ingrediente, ingrediente.Nombre
+FROM pla_inter_ingre
+INNER JOIN ingrediente ON pla_inter_ingre.Id_Ingrediente = ingrediente.Id_Ingrediente
+WHERE Id_Plato = 1;

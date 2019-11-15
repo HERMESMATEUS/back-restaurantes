@@ -10,7 +10,8 @@ const config = {
 };
 
 // Create a MySQL pool
-const pool = mysql.createPool(config);
+// const pool = mysql.createPool(config);
+const pool = mysql.createConnection(config);
 
 // Export the pool
 module.exports = pool;

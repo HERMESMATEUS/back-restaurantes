@@ -1,9 +1,6 @@
-const path = require('path');
-const sha1 = require('js-sha1');
 const pool = require('../data/config');
 
 const Generals = app => {
-
 
     app.get('/Generals/GetCountrys', (request, response) => {
 
@@ -87,9 +84,12 @@ const Generals = app => {
     app.post('/Generals/GetPointStore', (request, response) => {
         let ErrorPunto_venta = { "success": false, "body": "No existen puntos de venta" }
         try {
-            let query = "SELECT * FROM punto_venta";
-            if (request.body.Id_Restaurante) query = "SELECT * FROM punto_venta WHERE ?";
-            pool.query(query, [request.body], (error, result) => {
+            let QueryId_Restaurante = '';
+            let QueryId_Ciudad = '';
+            if (request.body.Id_Restaurante) QueryId_Restaurante = ` WHERE Id_Restaurante = ${request.body.Id_Restaurante} `;
+            if (request.body.Id_Ciudad) QueryId_Ciudad = ` ${QueryId_Restaurante != '' ? 'AND' : 'WHERE'} Id_Ciudad = ${request.body.Id_Ciudad} `;
+            let query = `SELECT * FROM punto_venta ${QueryId_Restaurante + QueryId_Ciudad}`;
+            pool.query(query, (error, result) => {
                 if (error) {
                     console.log('error: ', error);
                     ErrorPunto_venta.body = error.code;
