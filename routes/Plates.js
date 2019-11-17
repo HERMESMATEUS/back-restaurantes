@@ -22,7 +22,7 @@ const Plates = app => {
                 if (result.length != 0) {
                     response.send({
                         "success": true,
-                        "body": { ...result[0] }
+                        "body": result
                     });
                 } else response.send(ErrorPlatos);
             });
@@ -64,7 +64,7 @@ const Plates = app => {
 
         pool.beginTransaction(function (err) {
             if (err) { throw err; }
-            let ErrorUser = { "success": false, "body": "Usuario o contraseña incorrecta" };
+            let ErrorPlates = { "success": false, "body": "Usuario o contraseña incorrecta" };
             if (request.body.Nombre && request.body.Valor && request.body.Id_Restaurante && request.body.Ingredientes.length > 0) {
                 let body = { Nombre: request.body.Nombre, Valor: request.body.Valor, Id_Restaurante: request.body.Id_Restaurante };
                 try {
@@ -72,40 +72,42 @@ const Plates = app => {
                         if (error) {
                             return pool.rollback(function () {
                                 console.log('error: ', error);
-                                ErrorUser.body = error.code;
-                                response.send(ErrorUser);
+                                ErrorPlates.body = error.code;
+                                response.send(ErrorPlates);
                             });
-                        } else if (result.length != 0) {
+                        }
+                        else if (result.length != 0) {
                             request.body.Ingredientes.map((item) => {
-                                pool.query(' INSERT INTO pla_inter_ingre SET Id_Plato = ? Id_Ingrediente = ? ', [result.insertId, item], (error, result, fields) => {
+                                pool.query(' INSERT INTO pla_inter_ingre SET Id_Plato = ? , Id_Ingrediente = ? ', [result.insertId, item], (error, result, fields) => {
                                     if (error) {
                                         return pool.rollback(function () {
                                             console.log('error: ', error);
-                                            ErrorUser.body = error.code;
-                                            response.send(ErrorUser);
+                                            ErrorPlates.body = error.code;
+                                            response.send(ErrorPlates);
                                         });
                                     }
-                                    pool.commit(function (err) {
-                                        if (err) {
-                                            return pool.rollback(function () {
-                                                console.log('error: ', error);
-                                                ErrorUser.body = error.code;
-                                                response.send(ErrorUser);
-                                            });
-                                        }
-                                        response.send({
-                                            "success": true,
-                                            "body": request.body
-                                        });
-                                    });
                                 });
-                            })
-                        } else response.send(ErrorUser);
+                            });
+
+                        pool.commit(function (err) {
+                            if (err) {
+                                return pool.rollback(function () {
+                                    console.log('error: ', error);
+                                    ErrorPlates.body = error.code;
+                                    response.send(ErrorPlates);
+                                });
+                            }
+                            response.send({
+                                "success": true,
+                                "body": request.body
+                            });
+                        });
+                        } else response.send(ErrorPlates);
                     });
                 } catch (error) {
-                    response.send(ErrorUser);
+                    response.send(ErrorPlates);
                 }
-            } else response.send(ErrorUser);
+            } else response.send(ErrorPlates);
         });
 
     });
