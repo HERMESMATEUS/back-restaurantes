@@ -1,6 +1,5 @@
-const path = require('path');
 const sha1 = require('js-sha1');
-const pool = require('../data/config');
+const pool = require('../bd/config');
 
 const Authentication = app => {
 

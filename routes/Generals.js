@@ -1,4 +1,4 @@
-const pool = require('../data/config');
+const pool = require('../bd/config');
 
 const Generals = app => {
 

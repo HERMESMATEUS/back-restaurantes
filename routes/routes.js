@@ -4,26 +4,9 @@ var fs = require('fs');
 
 
 // Load the MySQL pool connection
-const pool = require('../data/config');
+const pool = require('../bd/config');
 
 const router = app => {
-
-
-    app.get('/', (request, response) => {
-        // response.writeHead(200, { 'Content-Type':'text/html' });
-
-        // fs.readFile('../html/index.html', null , (error , data) => {
-        //     if(error){
-        //         response.writeHead(404);
-        //         response.writeHead('File not found!')
-        //     }else{
-        //         response.write(data);
-        //     }
-        //     response.end();
-        // })
-        response.sendFile(path.join(__dirname + '/../html/index.html'));
-    });
-
 
     // Display all users
     app.get('/users', (request, response) => {

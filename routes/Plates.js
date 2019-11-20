@@ -1,4 +1,4 @@
-const pool = require('../data/config');
+const pool = require('../bd/config');
 
 const Plates = app => {
 
@@ -89,19 +89,19 @@ const Plates = app => {
                                 });
                             });
 
-                        pool.commit(function (err) {
-                            if (err) {
-                                return pool.rollback(function () {
-                                    console.log('error: ', error);
-                                    ErrorPlates.body = error.code;
-                                    response.send(ErrorPlates);
+                            pool.commit(function (err) {
+                                if (err) {
+                                    return pool.rollback(function () {
+                                        console.log('error: ', error);
+                                        ErrorPlates.body = error.code;
+                                        response.send(ErrorPlates);
+                                    });
+                                }
+                                response.send({
+                                    "success": true,
+                                    "body": request.body
                                 });
-                            }
-                            response.send({
-                                "success": true,
-                                "body": request.body
                             });
-                        });
                         } else response.send(ErrorPlates);
                     });
                 } catch (error) {

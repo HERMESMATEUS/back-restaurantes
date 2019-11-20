@@ -2,41 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const port = 3002;
 const app = express();
-const Generals = require('./routes/Generals');
-const Plates = require('./routes/Plates');
-const Authentication = require('./routes/Authentication');
+const api = require('./routes/index');
 var cors = require('cors');
-const https = require('https');
-const fs = require('fs');
 
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true,
 }));
-
-Authentication(app);
-Generals(app);
-Plates(app);
-
-// Start the server
-
-
-const options = {
-    key: fs.readFileSync('./key.pem'),
-    cert: fs.readFileSync('./cert.pem')
-};
-
-// https.createServer(options, app).listen(port, (error) => {
-//     if (error) return console.log(`Error: ${error}`);
-//     console.log(`Server listening on port ${server.address().port}`);
-// });
-
-// https.createServer(options, function (req, res) {
-//     res.writeHead(200);
-//     res.end("hello world\n");
-// }).listen(port);
-
+api(app);
 
 const server = app.listen(port, (error) => {
     if (error) return console.log(`Error: ${error}`);
