@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "962e4f55-04d7-4f1b-b6f5-88c4bfd525e2",
+		"name": "Restaurantes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/Authentication",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlServer}}/Authentication",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Authentication/SignIn",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Id_Usuario\": \"1014290650\",\n    \"Contraseña\": \"12345\"\n}"
+				},
+				"url": {
+					"raw": "{{urlServer}}/Authentication/SignIn",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Authentication",
+						"SignIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Authentication/SignUp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"Id_Usuario\": 1122561251,\n        \"Nombre\": \"Hermes Mateus\",\n        \"Contraseña\": \"8cb2237d0679ca88db6464eac60da96345513964\",\n        \"Id_Rol\": 1,\n        \"Id_Punto_venta\": 1,\n        \"Cargo_Descripcion\": \"Soy el master el chuzo perro\",\n        \"Genero\": \"Masculino\",\n        \"Edad\": 22,\n        \"Fecha_Ingreso\": \"2019-11-14\"\n    }"
+				},
+				"url": {
+					"raw": "{{urlServer}}/Authentication/SignUp",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Authentication",
+						"SignUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Authentication/Crypto/:variable",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlServer}}/Authentication/Crypto/admin123",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Authentication",
+						"Crypto",
+						"admin123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Generals/GetCountrys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlServer}}/Generals/GetCountrys",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Generals",
+						"GetCountrys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Generals/GetCities/:Id_Pais",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlServer}}/Generals/GetCities/1",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Generals",
+						"GetCities",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Generals/GetRoles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlServer}}/Generals/GetRoles",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Generals",
+						"GetRoles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Authentication/CreateOrSelectCliente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id_Cliente\":101426995,\n\t\"Nombre\":\"Hermes\",\n\t\"Id_Rol\":2\n}"
+				},
+				"url": {
+					"raw": "{{urlServer}}/Authentication/CreateOrSelectCliente",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Authentication",
+						"CreateOrSelectCliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Generals/GetPointStore",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id_Restaurante\":456789876,\n\t\"Id_Ciudad\": 1\n}"
+				},
+				"url": {
+					"raw": "{{urlServer}}/Generals/GetPointStore",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Generals",
+						"GetPointStore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Plates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlServer}}/Plates",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Plates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Plates/GetPlates/:Id_Restaurante",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlServer}}/Plates/GetPlates/456789876",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Plates",
+						"GetPlates",
+						"456789876"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Plates/Features/:Id_Plato",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{urlServer}}/Plates/Features/1",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Plates",
+						"Features",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/Plates/CreatePlate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " { \n \t\"Nombre\": \"Bandeja\", \n \t\"Valor\": 15000, \n \t\"Id_Restaurante\":  456789876,\n \t\"Ingredientes\":[ 1, 2]\n }"
+				},
+				"url": {
+					"raw": "{{urlServer}}/Plates/CreatePlate",
+					"host": [
+						"{{urlServer}}"
+					],
+					"path": [
+						"Plates",
+						"CreatePlate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

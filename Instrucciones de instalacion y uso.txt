@@ -1,5 +1,3 @@
-# back-restaurantes
-
 Pasos para la instalacion y ejecucion del REST API
 
 1- Ingrese al siguiente link https://github.com/HERMESMATEUS/back-restaurantes
