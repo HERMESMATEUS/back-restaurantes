@@ -16,7 +16,7 @@ export default class SignUpModule extends Component {
             <Image style={Styles.Image1} source={ImagesApp.Logo} />
           </View>
 
-          <View style={{ flex: 3, justifyContent: 'flex-start', alignItems: 'center' }}>
+          <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center' }}>
 
             <ScrollView>
 

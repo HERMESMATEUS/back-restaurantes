@@ -32,8 +32,8 @@ export const Styles = StyleSheet.create({
   },
 
   Image1: {
-    height: 126.26,
-    width: 100,
+    height: 200,
+    width: 200,
     resizeMode: 'contain'
   },
 
