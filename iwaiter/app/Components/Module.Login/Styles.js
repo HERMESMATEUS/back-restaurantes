@@ -19,6 +19,18 @@ export const Styles = StyleSheet.create({
     alignItems: 'center'
   },
 
+  View4: {
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor: 'white',
+    height: 50,
+    width: 302,
+    padding: 3
+  },
+
   Image1: {
     height: 126.26,
     width: 100,
@@ -52,5 +64,16 @@ export const Styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
+
+  TextInput1: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 50,
+    alignItems: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    backgroundColor: 'white',
+  }
 
 });

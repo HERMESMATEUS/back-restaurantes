@@ -14,7 +14,7 @@ export default class ProfileComponent extends Component {
         super(props)
         this.state = {
             Name: 'Andrea Contreras',
-            Email: 'andreacras@dominio.co',
+            CelNumberOrDocument: '313 000 0000',
             status: true,
             Edit: false,
             showModalDeleteAcount: false,
@@ -94,11 +94,12 @@ export default class ProfileComponent extends Component {
                                     color: 'white',
                                     fontSize: 15,
                                     fontWeight: 'bold',
-                                    opacity: 0.8
+                                    opacity: 0.8,
+                                    textAlign: 'center',
                                 }}
                                 editable={this.state.Edit}
                                 placeholderTextColor='white'
-                                placeholder={'Ingrese su nombre'}
+                                placeholder={'Nombre'}
                                 onChange={(Name) => this.setState({ Name })}
                                 value={this.state.Name}
                             />
@@ -107,13 +108,14 @@ export default class ProfileComponent extends Component {
                                     height: 40,
                                     color: 'white',
                                     fontSize: 15,
-                                    opacity: 0.8
+                                    opacity: 0.8,
+                                    textAlign: 'center',
                                 }}
                                 editable={this.state.Edit}
                                 placeholderTextColor='white'
-                                placeholder={'Ingrese su correo'}
-                                onChange={(Email) => this.setState({ Email })}
-                                value={this.state.Email}
+                                placeholder={'Numero de Celular o Numero de CC'}
+                                onChange={(CelNumberOrDocument) => this.setState({ CelNumberOrDocument })}
+                                value={this.state.CelNumberOrDocument}
                             />
                         </View>
                     </View>
@@ -150,7 +152,7 @@ export default class ProfileComponent extends Component {
                             </View>
                     }
 
-                   
+
 
                 </View>
 

@@ -102,7 +102,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.tuapplicacion.idjapp001"
+        applicationId "com.hermes.idwaiter"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

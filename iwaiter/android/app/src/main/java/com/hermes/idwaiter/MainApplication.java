@@ -1,4 +1,4 @@
-package com.tuapplicacion.idjapp001;
+package com.hermes.idwaiter;
 
 import android.app.Application;
 import com.facebook.react.ReactApplication;
